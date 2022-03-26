@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Pagina</title>
+
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            .bloco {
+                text-align: center;
+                background-image: linear-gradient(30deg, rgb(140, 255, 255 ),rgb(255, 255, 255));
+                height: 100vh;
+                color: white;
+            }
+
+            .calculadora {
+                width: 225px;
+                height: 340px;
+                padding: 20px;
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.8);
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 15px;
+            }
+
+            .botao {
+                width: 50px;
+                height: 50px;
+                border: none;
+                margin: 2px;
+                background-color: rgb(31, 31, 31);
+                color: white;
+                cursor: pointer;
+                font-size: 20px;
+            }
+
+            .botao:hover {
+                background-color: black;
+                font-size: 30px;
+                color: aquamarine;
+            }
+
+            #resultado {
+                margin-left: 5px;
+                width: 210px;
+                height: 20px;
+                background:white;
+                padding: 3px;
+                text-align: right;
+                color: black;
+                font-size: 20px;
+                margin-bottom: 2px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="bloco">
+            <h1 style="color: black;">Calculadora By klaercio</h1>
+            <div class="calculadora">
+                <h2>Calculadora</h2>
+                <p id="resultado"></p>
+                <table>
+                    <tr>
+                        <td><button class="botao" onclick="clearC()">C</button></td>
+                        <td><button class="botao" onclick="apagar()"><</button></td>
+                        <td><button class="botao" onclick="adicionar('/')">/</button></td>
+                        <td><button class="botao" onclick="adicionar('*')">*</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="botao" onclick="adicionar('7')">7</button></td>
+                        <td><button class="botao" onclick="adicionar('8')">8</button></td>
+                        <td><button class="botao" onclick="adicionar('9')">9</button></td>
+                        <td><button class="botao" onclick="adicionar('-')">-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="botao" onclick="adicionar('4')">4</button></td>
+                        <td><button class="botao" onclick="adicionar('5')">5</button></td>
+                        <td><button class="botao" onclick="adicionar('6')">6</button></td>
+                        <td><button class="botao" onclick="adicionar('+')">+</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="botao" onclick="adicionar('1')">1</button></td>
+                        <td><button class="botao" onclick="adicionar('2')">2</button></td>
+                        <td><button class="botao" onclick="adicionar('3')">3</button></td>
+                        <td rowspan="2"><button class="botao" style="height: 107px;" onclick="calcular()">=</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button class="botao" style="width: 105px;" onclick="adicionar('0')">0</button></td>
+                        <td><button class="botao" onclick="adicionar('.')">.</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>    
+
+        <script>
+            function adicionar(num) {
+                var result = document.getElementById("resultado").innerHTML;
+                document.getElementById("resultado").innerHTML = result + num;
+            }
+
+            function clearC(){
+                document.getElementById("resultado").innerHTML = "";
+            }
+
+            function apagar() {
+                 var atual = document.getElementById("resultado").innerHTML;
+                 document.getElementById("resultado").innerHTML = atual.substring(0, atual.length-1)
+            }
+
+            function calcular() {
+                document.getElementById("resultado").innerHTML = eval(document.getElementById("resultado").innerHTML);
+            }
+        </script>
+    </body>
+</html>
